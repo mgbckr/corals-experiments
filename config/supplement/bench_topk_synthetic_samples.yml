@@ -1,0 +1,23 @@
+context:
+  prefix: topk_default
+  data: synthetic.*m-.*_n-20000_.*
+  k_ratio: 0.001
+  threshold: 0.9
+  n_repeat: 10
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: topk_matrix
+  -
+    lang: python
+    algorithm: topk_balltree_combined_tree
+  -
+    lang: julia
+    algorithm: topk_matrix
+  -
+    lang: julia
+    algorithm: topk_balltree_nn_combined_tree
+  -
+    lang: r
+    algorithm: topk_matrix

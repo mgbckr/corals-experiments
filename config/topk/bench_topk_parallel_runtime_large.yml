@@ -1,0 +1,14 @@
+context:
+  prefix: topk_parallel
+  data: (singlecell_large|large_synthetic).*
+  # data: (preeclampsia|pregnancy).*
+  k_ratio: 0.001
+  threshold: 0.9
+  n_repeat: 2
+  n_threads: 1
+  python:
+    memory_backend: psutil
+experiments:
+  -
+    lang: python
+    algorithm: topk_balltree_combined_tree_optimized_parallel_64

@@ -1,0 +1,9 @@
+context:
+  prefix: full_default
+  data: cancer_postprocessed_nonegatives_dropduplicates_sample-0.50
+  n_repeat: 10
+  n_threads: 64
+experiments:
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical

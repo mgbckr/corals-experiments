@@ -1,0 +1,17 @@
+context:
+  prefix: topk_default
+  data: (preeclampsia|pregnancy|cancer_postprocessed_nonegatives_dropduplicates_sample-0.25).*
+  k_ratio: 0.001
+  threshold: 0.9
+  n_repeat: 10
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: topk_balltree_combined_tree
+  -
+    lang: python
+    algorithm: topk_balltree_twice
+  -
+    lang: python
+    algorithm: topk_balltree_combined_tree_no-dual

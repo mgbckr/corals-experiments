@@ -1,0 +1,12 @@
+context:
+  prefix: full_default
+  # data: (preeclampsia|pregnancy|cancer_postprocessed_nonegatives_dropduplicates_sample-0.25).*
+  data: (preeclampsia|pregnancy).*
+  n_repeat: 3
+  n_threads: 1
+experiments:
+    -
+    # causes a segmentation fault for the cancer datasets, which is why it is separate from the rest
+       lang: r
+       algorithm: cor_coop
+

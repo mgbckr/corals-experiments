@@ -1,0 +1,11 @@
+context:
+  prefix: topk_default
+  data: (singlecell_large_|large_synthetic_).*
+  k_ratio: 0.001
+  threshold: 0.9
+  n_repeat: 2
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: topk_balltree_combined_tree

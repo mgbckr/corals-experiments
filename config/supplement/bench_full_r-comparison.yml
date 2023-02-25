@@ -1,0 +1,30 @@
+context:
+  prefix: full_default
+  data: (preeclampsia|pregnancy|cancer_postprocessed_nonegatives_dropduplicates_sample-0.25).*
+  n_repeat: 3
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+  -
+    lang: r
+    algorithm: cor_cor
+  -
+    lang: r
+    algorithm: cor_wgcna
+  -
+    lang: r
+    algorithm: cor_rfast
+  -
+    lang: r
+    algorithm: cor_hiclimr
+  -
+    lang: r
+    algorithm: cor_symmetrical
+  # -
+  #   # causes a segmentation fault for the largest dataset, 
+  #   # so it has been moved to a separate file: bench_full_r-comparison_coop.yml
+  #   lang: r
+  #   algorithm: cor_coop
+

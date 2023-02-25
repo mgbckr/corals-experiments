@@ -1,0 +1,9 @@
+context:
+  prefix: full_default
+  data: (preeclampsia|pregnancy).*
+  n_repeat: 10
+  n_threads: 64
+experiments:
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical

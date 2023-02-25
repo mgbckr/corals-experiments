@@ -1,0 +1,92 @@
+context:
+  prefix: full_default
+  data: cancer_postprocessed_nonegatives_dropduplicates_sample-0.25
+  n_repeat: 10
+  n_threads: 1
+  python:
+    memory_backend: "psutil"
+experiments:
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 1
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 2
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 4
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 8
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 16
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 32
+  -
+    lang: python
+    algorithm: cor_corrcoef
+    n_threads: 64
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 1
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 2
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 4
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 8
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 16
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 32
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical
+    n_threads: 64
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 1
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 2
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 4
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 8
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 16
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 32
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+    n_threads: 64

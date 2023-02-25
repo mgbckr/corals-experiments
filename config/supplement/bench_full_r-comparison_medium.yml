@@ -1,0 +1,26 @@
+context:
+  prefix: full_default
+  data: (cancer_postprocessed_nonegatives_dropduplicates_sample-0.50).*
+  n_repeat: 3
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+  -
+    lang: r
+    algorithm: cor_cor
+  -
+    lang: r
+    algorithm: cor_wgcna
+  -
+    lang: r
+    algorithm: cor_rfast
+  # # takes way longer than 24h hours for one run (never finished)  
+  # -
+  #   lang: r
+  #   algorithm: cor_hiclimr
+  -
+    lang: r
+    algorithm: cor_symmetrical
+

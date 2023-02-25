@@ -1,0 +1,24 @@
+context:
+  prefix: full_default
+  data: synthetic.*
+  n_repeat: 10
+  n_threads: 1
+experiments:
+  -
+    lang: python
+    algorithm: cor_corrcoef
+  -
+    lang: python
+    algorithm: cor_matrix_symmetrical_nocopy
+  -
+    lang: julia
+    algorithm: cor_cor
+  -
+    lang: julia
+    algorithm: cor_symmetrical_nocopy2
+  -
+    lang: r
+    algorithm: cor_cor
+  -
+    lang: r
+    algorithm: cor_symmetrical_nocopy
