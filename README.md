@@ -296,3 +296,4 @@ For top-k correlation search, we recommend using the basic CorALS implementation
 However, as the number of features increases, memory issues will make this approach impossible to use. When this is the case, switching to the index based CorALS implementation is the best option.
 
 **Note**: With increasing sample numbers, CorALS becomes slower, which may warrant other heuristics such as dimensionality reduction such as locality sensitive hashing or random projections. However, this exploration is left for future work.
+
