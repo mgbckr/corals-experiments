@@ -4,7 +4,7 @@
 
 Advanced measurement and data storage technologies have enabled high-dimensional profiling of complex biological systems. For this, modern multiomics studies regularly produce datasets with hundreds of thousands of measurements per sample enabling a new era of precision medicine. Correlation analysis, developed by Galton and Pearson in the 19th century, brought mathematical rigor to empirical sciences and allows for insights in the coordination and underlying processes of such complex systems. However, the construction of large correlation networks in modern high-dimensional datasets remains a major computational challenge due to rapidly growing runtime and memory requirements. We tackle this challenge by introducing, *CorALS*, an open-source framework for the construction and analysis of large-scale correlation networks for high-dimensional biological data. It features off-the-shelf algorithms suitable for both personal and high-performance computers enabling novel workflows and downstream analysis approaches. We illustrate the broad scope and  potential of *CorALS* by exploring unprecedented perspectives on complex biological processes in large-scale multiomics and single cell studies.
 
-**Note:** This repository provides the code to reproduce the results and analyses from the manuscript. We will provide an easy to use Python package upon publication.
+**Note:** This repository provides the code to reproduce the results and analyses from the manuscript. The corresponding [Python package](https://pypi.org/project/corals/) is maintained in a [separate repository](https://github.com/mgbckr/corals-python).
 
 ## System Requirements
 
@@ -18,9 +18,22 @@ Any regular hardware that can run Docker should be able to run the code. However
 
 ## Reproducing Results
 
-If not already done, extract the archive file `paper_2021_corals_03_code.tar.gz`.
+### Clone repositories
 
-**Note:** In the published version, this step will be replaced by cloning the corresponding repositories. The code of the *CorALS* libraries themselves will be published in separate repositories. The corresponding Python library will be made available as an open-source, installable, stand-alone package.
+Clone this repository:
+
+```bash
+git clone git@github.com:mgbckr/corals-experiments.git
+# git clone https://github.com/mgbckr/corals-experiments.git
+```
+
+Clone the different implementation repositories:
+
+```bash
+git clone git@github.com:mgbckr/corals-lib-python.git
+git clone git@github.com:mgbckr/corals-lib-julia.git
+git clone git@github.com:mgbckr/corals-lib-r.git
+```
 
 ### Install Docker
 
@@ -33,13 +46,16 @@ Make sure Docker is installed and configured properly. For this refer to the [of
 In the following, we assume you are running on Linux to start the Docker container. Please adjust as necessary.
 
 ```bash
+# change into the experiments repository
+cd corals-experiments
+
 # docker build . -t corals-benchmark:local
 docker pull mgbckr/corals-benchmark:1.0.0
 
 docker run -v $(pwd):/workspace \
-  -v $(pwd)/lib-julia:/opt/libraries/julia \
-  -v $(pwd)/lib-python:/opt/libraries/python \
-  -v $(pwd)/lib-r:/opt/libraries/r \
+  -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
+  -v $(pwd)/../corals-lib-python:/opt/libraries/python \
+  -v $(pwd)/../corals-lib-r:/opt/libraries/r \
   -it mgbckr/corals-benchmark:1.0.0
 
 # Then, WITHIN the Docker container:
@@ -88,9 +104,11 @@ bash src/coralsarticle/data/process/cancer_download.sh
 #### Single cell
 
 ```bash
+pip install gdown
+
+# NOTE: download sometimes cancels prematurely; run again if that happens 
 fileId=1NKPC1zp_UOIqJovxHoAmXYmT9qGKS8EJ
 fileName=data/processed/immuneclock_singlecell_unstim.h5
-pip install gdown
 gdown $fileId -O $fileName
 ```
 
@@ -177,16 +195,15 @@ python src/coralsarticle/benchmark/resources.py -c config/supplement/bench_topk_
 # python src/coralsarticle/benchmark/accuracy_topkdiff.py --data pregnancy --k_ratio 0.001
 ```
 
-#### Supplement: Comparision to other libraries
+#### Supplement: Comparison to other libraries
 
-**Runtime**: 
+**Runtime**:
 
-  * Setup: ~1 hour
-  * Experiments: 10 minutes
+* Setup: ~1 hour
+* Experiments: 10 minutes
 
 The folder `scripts` contains additional code snippets for comparing a variety of other software packages to CorALS.
 See `scripts/benchmark_cor.sh` and `scripts_topkdiff.py`
-
 
 ### Results and visualizations
 
@@ -197,11 +214,11 @@ Start Jupyter server within the docker container:
 ```bash
 
 docker run -v $(pwd):/workspace \
-  -v $(pwd)/lib-julia:/opt/libraries/julia \
-  -v $(pwd)/lib-python:/opt/libraries/python \
-  -v $(pwd)/lib-r:/opt/libraries/r \
+  -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
+  -v $(pwd)/../corals-lib-python:/opt/libraries/python \
+  -v $(pwd)/../corals-lib-r:/opt/libraries/r \
   --publish 17299:8888 \
-  -it benchmark:latest
+  -it mgbckr/corals-benchmark:1.0.0
 
 # Then, WITHIN the Docker container:
 python setup.py develop
@@ -224,10 +241,10 @@ Start the docker container and `python` or `ipython`.
 
 ```bash
 docker run -v $(pwd):/workspace \
-  -v $(pwd)/lib-julia:/opt/libraries/julia \
-  -v $(pwd)/lib-python:/opt/libraries/python \
-  -v $(pwd)/lib-r:/opt/libraries/r \
-  -it benchmark:latest
+  -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
+  -v $(pwd)/../corals-lib-python:/opt/libraries/python \
+  -v $(pwd)/../corals-lib-r:/opt/libraries/r \
+  -it mgbckr/corals-benchmark:1.0.0
 
 ipython
 ```

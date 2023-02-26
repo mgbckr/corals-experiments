@@ -20,6 +20,8 @@ dense_index_optim.bin.dat
 tmp_index
 coralsarticle
 coralsarticle*.zip
+_deploy
+deploy
 
 # Temporary and binary files
 *~
