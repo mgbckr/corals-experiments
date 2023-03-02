@@ -52,10 +52,10 @@ cd corals-experiments
 # docker build . -t corals-benchmark:local
 docker pull mgbckr/corals-benchmark:1.0.0
 
-docker run -v $(pwd):/workspace \
-  -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
-  -v $(pwd)/../corals-lib-python:/opt/libraries/python \
-  -v $(pwd)/../corals-lib-r:/opt/libraries/r \
+docker run -v "$(pwd):/workspace" \
+  -v "$(pwd)/../corals-lib-julia:/opt/libraries/julia" \
+  -v "$(pwd)/../corals-lib-python:/opt/libraries/python" \
+  -v "$(pwd)/../corals-lib-r:/opt/libraries/r" \
   -it mgbckr/corals-benchmark:1.0.0
 
 # Then, WITHIN the Docker container:
@@ -118,9 +118,9 @@ gdown $fileId -O $fileName
 python src/coralsarticle/data/prepare.py
 ```
 
-### Run benchmaring experiments
+### Run benchmarking experiments
 
-**Runtime:** The currently enabled experiments can already take several hours. Full experiments can run up to a week or more. See the main manuscript for runtimes of individual experiments. Experiments are repeated two to ten times depending on runtime. Generally, running on a larger machine is recommended (at least 64 cores and 312Gb of memory), since particularly the baselines methods need a lot of memory.
+**Runtime:** The currently enabled experiments can already take several hours. Full experiments can run up to a week or more. See the main manuscript for runtimes of individual experiments. Experiments are repeated two to ten times depending on runtime. Generally, running on a larger machine is recommended (at least 64 cores and 312Gb of memory), since particularly the baseline methods need a lot of memory.
 
 **Note:** Particularly long running or resource intensive experiments are uncommented or excluded. See files in `config` folder for more details and additional experiments to reproduce all results.
 
