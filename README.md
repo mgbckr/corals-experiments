@@ -213,10 +213,10 @@ Start Jupyter server within the docker container:
 
 ```bash
 
-docker run -v $(pwd):/workspace \
-  -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
-  -v $(pwd)/../corals-lib-python:/opt/libraries/python \
-  -v $(pwd)/../corals-lib-r:/opt/libraries/r \
+docker run -v "$(pwd):/workspace" \
+  -v "$(pwd)/../corals-lib-julia:/opt/libraries/julia" \
+  -v "$(pwd)/../corals-lib-python:/opt/libraries/python" \
+  -v "$(pwd)/../corals-lib-r:/opt/libraries/r" \
   --publish 17299:8888 \
   -it mgbckr/corals-benchmark:1.0.0
 
