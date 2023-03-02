@@ -122,7 +122,7 @@ python src/coralsarticle/data/prepare.py
 
 **Runtime:** The currently enabled experiments can already take several hours. Full experiments can run up to a week or more. See the main manuscript for runtimes of individual experiments. Experiments are repeated two to ten times depending on runtime. Generally, running on a larger machine is recommended (at least 64 cores and 312Gb of memory), since particularly the baseline methods need a lot of memory.
 
-**Note:** Particularly long running or resource intensive experiments are uncommented or excluded. See files in `config` folder for more details and additional experiments to reproduce all results.
+**Note:** Particularly long-running or resource-intensive experiments are uncommented or excluded. See files in `config` folder for more details and additional experiments to reproduce all results.
 
 #### Main: Full correlation matrix
 
