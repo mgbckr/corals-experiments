@@ -2,3 +2,7 @@ data
 huda
 _out
 notebooks
+lib-python
+lib-r
+lib-julia
+spark*

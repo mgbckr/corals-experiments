@@ -15,3 +15,7 @@ BiocManager::install("WGCNA")#, version = "1.70-3")
 BiocManager::install("coop")#, version = "0.6-3")
 BiocManager::install("HiClimR")#, version = "2.2.0")
 BiocManager::install("Rfast")#, version = "2.0.3")
+
+# used for FCS file processing
+BiocManager::install("flowCore")
+# BiocManager::install("FlowRepositoryR") # does not seem to work
