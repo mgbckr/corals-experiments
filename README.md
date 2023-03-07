@@ -92,15 +92,10 @@ bash src/coralsarticle/data/process/cancer_download.sh
 #### Single cell
 
 ```bash
-pip install gdown
-
-# NOTE: download sometimes cancels prematurely; run again if that happens 
-fileId=1NKPC1zp_UOIqJovxHoAmXYmT9qGKS8EJ
-fileName=data/processed/immuneclock_singlecell_unstim.h5
-gdown $fileId -O $fileName
+wget https://zenodo.org/record/7700115/files/singlecell_data.zip
+unzip singlecell_data.zip
+rm singlecell_data.zip
 ```
-
-Note: The file `immuneclock_singlecell_unstim.h5` could also 
 
 #### Prepare data
 
@@ -215,13 +210,32 @@ Open `http://localhost:17299` in your browser an run the notebooks in the `noteb
 
 #### Application notebooks
 
-**Runtime**: The application notebooks (`xx_application_*`) can run a long time taking from several hours up to a day. Running on a larger machine is recommended (at least 64 cores and 312Gb of memory).
+**Runtime**: The application notebooks (`xx_application_*`) can run a long time taking from several hours up to a day. Running on a larger machine is recommended (at least 64 cores and 312Gb of memory). 
 
-The notebooks reproduce all results from the manuscript.
+The notebooks reproduce all results, tables, and figures from the manuscript.
+
+In order to skip some of the long running tasks like benchmarking, dimensionality reduction, and sampling, we provide intermediate data. This allows you to 
+* skip the benchmarking experiments (see above)
+* skip `02_application_multiomics_prepare-embeddings.ipynb`
+* run `03.02_application_multiomics.ipynb` instead of `03.01_application_multiomics.ipynb`
+* skip `04_application_singlecell_prepare-data.ipynb` and `04_application_singlecell_prepare-data.ipynb`
+
+For this, run the following:
+
+```bash
+wget https://zenodo.org/record/7700115/files/benchmark.zip
+wget https://zenodo.org/record/7700115/files/multiomics_figure.zip
+wget https://zenodo.org/record/7700115/files/singlecell_data.zip  # skip if already done above for downloading data
+wget https://zenodo.org/record/7700115/files/singlecell_figure.zip
+unzip *.zip
+rm *.zip
+```
+
+**Note:** In order to produce the data statistics table (`5.1 Data Table`) in `01_benchmarks.ipynb` you still need to run the data preprocessing scripts mentioned above.
 
 ## Applying to custom data
 
-The Jupyter notebook `notebooks/07_examples.ipynb` contains examples on how to use the Python implementation of *CorALS*. Additionally the [Python package](https://pypi.org/project/corals/) contains additional examples and documentation.
+The Jupyter notebook `notebooks/07_examples.ipynb` contains examples on how to use the Python implementation of *CorALS*. Additionally, the [Python package](https://pypi.org/project/corals/) and the corresponding [Github repository](https://github.com/mgbckr/corals-lib-python) provides further examples, [documentation](https://github.com/mgbckr/corals-lib-python/tree/main/docs/notebooks/quickstart.ipynb), and tests ([notebook](https://github.com/mgbckr/corals-lib-python/tree/main/docs/notebooks/full.ipynb), [tests](https://github.com/mgbckr/corals-lib-python/tree/main/tests)).
 
 ## Practical considerations
 
@@ -260,14 +274,15 @@ If you want to modify the libraries while running things in Docker:
     -v $(pwd)/../corals-lib-python:/opt/libraries/python \
     -v $(pwd)/../corals-lib-julia:/opt/libraries/julia \
     -v $(pwd)/../corals-lib-r:/opt/libraries/r \
-    # ADDITIONAL ARGUMENTS HERE
+    # ADDITIONAL ARGUMENTS HERE, e.g. --publish 17299:8888 \
+    -it mgbckr/corals-experiments:1.0.0 \
   ```
 
 * Within the Docker container
     * 
-    * For the Python library it may be necessary to run `pip setup.py develop` once within the Docker container.
+    * For the Python library it may be necessary to run `pip install -e .` once within the Docker container.
 
       ```bash
       cd /opt/libraries/python
-      python setup.py develop
+      python install -e .
       ```
