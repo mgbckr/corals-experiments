@@ -70,12 +70,16 @@ mkdir -p data/processed
 
 #### Preeclampsia
 
-The preeclampsia dataset is not publicly available and may be requested directly from the authors. As it is solely used for runtime and memory benchmarking purposes, the benchmarks will automatically generate an equivalent substitute with regard to runtime and memory requirements.
+```bash
+wget https://zenodo.org/record/7713898/files/preeclampsia_data.zip
+unzip preeclampsia_data.zip
+rm preeclampsia_data.zip
+```
 
 #### Pregnancy
 
 ```bash
-wget https://zenodo.org/record/7709738/files/multiomics_data.zip
+wget https://zenodo.org/record/7713898/files/multiomics_data.zip
 unzip multiomics_data.zip
 rm multiomics_data.zip
 ```
@@ -90,7 +94,7 @@ bash src/coralsarticle/data/process/cancer_download.sh
 #### Single cell
 
 ```bash
-wget https://zenodo.org/record/7709738/files/singlecell_data.zip
+wget https://zenodo.org/record/7713898/files/singlecell_data.zip
 unzip singlecell_data.zip
 rm singlecell_data.zip
 ```
@@ -206,9 +210,9 @@ jupyter lab --allow-root --ip 0.0.0.0 --NotebookApp.token=''
 
 Open `http://localhost:17299` in your browser an run the notebooks in the `notebooks` folder.
 
-#### Application notebooks
+#### Notebooks
 
-**Runtime**: The application notebooks (`xx_application_*`) can run a long time taking from several hours up to a day. Running on a larger machine is recommended (at least 64 cores and 312Gb of memory). 
+**Runtime**: The notebooks (`xx_application_*`) can run a long time taking from several hours up to a day. Running on a larger machine is recommended (at least 64 cores and 312Gb of memory). 
 
 The notebooks reproduce all results, tables, and figures from the manuscript.
 
@@ -221,10 +225,10 @@ In order to skip some of the long running tasks like benchmarking, dimensionalit
 For this, run the following:
 
 ```bash
-wget https://zenodo.org/record/7709738/files/benchmark.zip
-wget https://zenodo.org/record/7709738/files/multiomics_figure.zip
-wget https://zenodo.org/record/7709738/files/singlecell_data.zip  # skip if already done above for downloading data
-wget https://zenodo.org/record/7709738/files/singlecell_figure.zip
+wget https://zenodo.org/record/7713898/files/benchmark.zip
+wget https://zenodo.org/record/7713898/files/multiomics_figure.zip
+wget https://zenodo.org/record/7713898/files/singlecell_data.zip  # skip if already done above for downloading data
+wget https://zenodo.org/record/7713898/files/singlecell_figure.zip
 unzip *.zip
 rm *.zip
 ```
