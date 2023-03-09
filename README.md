@@ -70,16 +70,14 @@ mkdir -p data/processed
 
 #### Preeclampsia
 
-The preeclampsia dataset is not publicly available and may be requested directly from the authors. As it is solely used for runtime and memory benchmarking purposes, the benchmarks will automatically generate a substitute.
+The preeclampsia dataset is not publicly available and may be requested directly from the authors. As it is solely used for runtime and memory benchmarking purposes, the benchmarks will automatically generate an equivalent substitute with regard to runtime and memory requirements.
 
 #### Pregnancy
 
 ```bash
-mkdir tmp
-wget https://nalab.stanford.edu/wp-content/uploads/termpregnancymultiomics.zip -P tmp/
-unzip tmp/termpregnancymultiomics.zip -d tmp/
-mv tmp/termpregnancymultiomics/Data.Rda data/raw/pregnancy.rda
-rm -r tmp
+wget https://zenodo.org/record/7709738/files/multiomics_data.zip
+unzip multiomics_data.zip
+rm multiomics_data.zip
 ```
 
 #### Cancer
@@ -92,7 +90,7 @@ bash src/coralsarticle/data/process/cancer_download.sh
 #### Single cell
 
 ```bash
-wget https://zenodo.org/record/7700115/files/singlecell_data.zip
+wget https://zenodo.org/record/7709738/files/singlecell_data.zip
 unzip singlecell_data.zip
 rm singlecell_data.zip
 ```
@@ -223,10 +221,10 @@ In order to skip some of the long running tasks like benchmarking, dimensionalit
 For this, run the following:
 
 ```bash
-wget https://zenodo.org/record/7700115/files/benchmark.zip
-wget https://zenodo.org/record/7700115/files/multiomics_figure.zip
-wget https://zenodo.org/record/7700115/files/singlecell_data.zip  # skip if already done above for downloading data
-wget https://zenodo.org/record/7700115/files/singlecell_figure.zip
+wget https://zenodo.org/record/7709738/files/benchmark.zip
+wget https://zenodo.org/record/7709738/files/multiomics_figure.zip
+wget https://zenodo.org/record/7709738/files/singlecell_data.zip  # skip if already done above for downloading data
+wget https://zenodo.org/record/7709738/files/singlecell_figure.zip
 unzip *.zip
 rm *.zip
 ```
